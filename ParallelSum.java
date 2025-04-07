@@ -3,8 +3,9 @@ import java.util.*;
 
 public class ParallelSum {
 
-    // RecursiveTask to compute sum in parallel
+    // RecursiveTask to compute sum using parallel stuffington
     static class SumTask extends RecursiveTask<Long> {
+	// declare vars
         private static final int THRESHOLD = 10_000;
         private final int[] numbers;
         private final int start;
@@ -25,6 +26,7 @@ public class ParallelSum {
                 }
                 return sum;
             } else {
+                // do the acutal parllel processing using two chickens
                 int mid = (start + end) / 2;
                 SumTask leftTask = new SumTask(numbers, start, mid);
                 SumTask rightTask = new SumTask(numbers, mid, end);
